@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emirates Robotics Product Details</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="product_detail.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  
+
+<nav class="navbar navbar-expand-lg sticky-top main-nav">
+  <div class="container nav-grid">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
+      <img src="logo.jpg" alt="Logo" class="site-logo">
+    </a>
+
+    <button class="navbar-toggler shadow-none border-0" type="button"
+            data-bs-toggle="collapse" data-bs-target="#topNav"
+            aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-lg-end shift-desktop" id="topNav">
+  <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 me-lg-3">
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About Us</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" href="{% url 'solutions' %}">Solutions</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'products' %}active{% endif %}" href="{% url 'products' %}">Products</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}" href="{% url 'blog_list' %}">Blogs</a></li>
+  </ul>
+
+  <!-- Mobile CTA (inside drawer) -->
+  <a href="{% url 'contact' %}" class="btn btn-brand w-100 d-lg-none mt-3">Call to Teach</a>
+
+</div>
+
+<!-- Desktop CTA (right side) -->
+<a href="{% url 'contact' %}" class="btn btn-brand d-none d-lg-inline-flex px-3">Call to Teach</a>
+</div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+<div class="heading" style="text-align: center; font-size: 50px; font-weight: bold;">
+    Product Details
+</div>
+ 
+
+  <section class="detail-wrap">
+
+    <!-- LEFT: GALLERY -->
+    <div class="gallery">
+      <div class="gallery-main" id="mainBox">
+        <img id="mainImg" src="image.png" alt="Pneumatic Butterfly Valve">
+      </div>
+
+      <div class="gallery-thumbs" id="thumbs">
+        <button class="thumb is-active" data-full="image.png">
+          <img src="image.png" alt="">
+        </button>
+        <button class="thumb" data-full="https://picsum.photos/seed/pbv2/1000/750">
+          <img src="https://picsum.photos/seed/pbv2/300/300" alt="">
+        </button>
+        <button class="thumb" data-full="https://picsum.photos/seed/pbv3/1000/750">
+          <img src="https://picsum.photos/seed/pbv3/300/300" alt="">
+        </button>
+        <button class="thumb" data-full="https://picsum.photos/seed/pbv4/1000/750">
+          <img src="https://picsum.photos/seed/pbv4/300/300" alt="">
+        </button>
+        <button class="thumb" data-full="https://picsum.photos/seed/pbv5/1000/750">
+          <img src="https://picsum.photos/seed/pbv5/300/300" alt="">
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="info">
+     
+ <h1 class="product-title">Pneumatic Butterfly Valve</h1>
+      
+
+      <!-- Description & Specs -->
+      <div class="accordion">
+        <details open>
+          <summary>Description <span class="chev">›</span></summary>
+          <div class="acc-body">
+            Compact, quarter-turn valve designed for on/off and throttling service in HVAC, water,
+            and general industrial applications. High cycle life actuator with NAMUR interface.
+
+
+              Compact, quarter-turn valve designed for on/off and throttling service in HVAC, water,
+            and general industrial applications. High cycle life actuator with NAMUR interface.
+         
+              Compact, quarter-turn valve designed for on/off and throttling service in HVAC, water,
+            and general industrial applications. High cycle life actuator with NAMUR interface.
+         
+              Compact, quarter-turn valve designed for on/off and throttling service in HVAC, water,
+            and general industrial applications. High cycle life actuator with NAMUR interface.
+         
+          </div>
+        </details>
+
+       <div class="actions">
+        <a class="btn btn-primary" href="#enquiry">Enquire Now</a>
+        
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (Optional) simple anchor for enquiry -->
+  <div id="enquiry" style="margin-top:36px"></div>
+</div>
+
+<!-- Lightbox (zoom) -->
+<div class="lb" id="lightbox" aria-hidden="true" role="dialog">
+  <button class="lb__close" id="lbClose" aria-label="Close">&times;</button>
+  <img class="lb__img" id="lbImg" alt="">
+</div>
+
+
+
+
+
+
+
+
+
+
+<section class="related-wrap">
+  <div class="related-head">
+    <h2 class="related-title" style="text-align: center;">Related Products</h2>
+
+    <!-- arrows -->
+    <div class="related-arrows">
+      <button class="rel-prev" aria-label="Previous"><span>‹</span></button>
+      <button class="rel-next" aria-label="Next"><span>›</span></button>
+    </div>
+  </div>
+
+  <!-- Slider -->
+  <div class="swiper related-swiper">
+    <div class="swiper-wrapper">
+
+      <!-- Slide (card) -->
+      <div class="swiper-slide">
+        <article class="rel-card">
+          <a class="rel-media" href="#">
+            <img src="image.png" alt="Ball Control Valve">
+          </a>
+          <div class="rel-body">
+            <h3 class="rel-name">Ball Control Valve</h3>
+            <a class="btn btn-ghost" href="#">Details</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="swiper-slide">
+        <article class="rel-card">
+          <a class="rel-media" href="#">
+            <img src="image.png" alt="Globe Control Valve">
+          </a>
+          <div class="rel-body">
+            <h3 class="rel-name">Globe Control Valve</h3>
+            <a class="btn btn-ghost" href="#">Details</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="swiper-slide">
+        <article class="rel-card">
+          <a class="rel-media" href="#">
+            <img src="image.png" alt="Pneumatic Actuator">
+          </a>
+          <div class="rel-body">
+            <h3 class="rel-name">Pneumatic Actuator</h3>
+            <a class="btn btn-ghost" href="#">Details</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="swiper-slide">
+        <article class="rel-card">
+          <a class="rel-media" href="#">
+            <img src="image.png" alt="Butterfly Valve">
+          </a>
+          <div class="rel-body">
+            <h3 class="rel-name">Butterfly Valve</h3>
+            <a class="btn btn-ghost" href="#">Details</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="swiper-slide">
+        <article class="rel-card">
+          <a class="rel-media" href="#">
+            <img src="image.png" alt="Knife Gate Valve">
+          </a>
+          <div class="rel-body">
+            <h3 class="rel-name">Knife Gate Valve</h3>
+            <a class="btn btn-ghost" href="#">Details</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- add more slides as needed -->
+    </div>
+
+    <!-- dots -->
+   
+  </div>
+</section>
+
+
+
+<!-- Newsletter band -->
+<section class="nl-band">
+  <div class="container">
+    <div class="row align-items-center g-3 g-lg-4">
+      <div class="col-lg-7">
+        <h3 class="nl-title mb-2 mb-lg-3">Subscribe to our newsletter</h3>
+        <p class="nl-text mb-0">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <form class="nl-form d-flex">
+          <input type="email" class="form-control nl-input" placeholder="Your email" required>
+          <button class="btn btn-nl ms-2" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <!-- top grid -->
+    <div class="row g-4 g-lg-5 align-items-start">
+      <div class="col-md-6 col-lg-4">
+        <img src="logo.jpg" alt="Emirates Robotics" class="footer-logo mb-3">
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="ft-head">About</h6>
+        <ul class="ft-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Solutions</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="ft-head">Information</h6>
+        <ul class="ft-links">
+          <li><a href="#">Contacts</a></li>
+          <li><a href="#">Our team</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="ft-head">Service</h6>
+        <ul class="ft-links">
+          <li><a href="#">Pages</a></li>
+          <li><a href="#">Elements</a></li>
+          <li><a href="#">Site map</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="ft-head">Social</h6>
+        <div class="d-flex gap-2">
+          <a class="soc" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="soc" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a class="soc" href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="ft-sep">
+
+    <!-- contacts row -->
+    <div class="row g-3 g-md-4">
+      <div class="col-md-4">
+        <h6 class="ft-sub">Contacts</h6>
+        <div class="ft-muted">+1 601-201-5880</div>
+        <a class="ft-link" href="mailto:ensome@info.co.us">ensome@info.co.us</a>
+      </div>
+      <div class="col-md-4">
+        <h6 class="ft-sub">&nbsp;</h6>
+        <div class="ft-muted">1642 Washington Avenue, Jackson, MS, 39201</div>
+        <a class="ft-link" href="#">Googlemap →</a>
+      </div>
+    </div>
+
+    <hr class="ft-sep">
+
+    <!-- bottom bar -->
+    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2">
+      <div class="d-flex gap-4">
+        <a class="ft-link" href="#">Privacy policy →</a>
+        <a class="ft-link" href="#">Terms of use →</a>
+      </div>
+      <div class="ft-copy">© 2025 Emirates Robotics LLC. All Rights Reserved.</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS bundle (once) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- jQuery (required by Owl) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<!-- Optional: auto-close drawer after clicking a link -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var topNav = document.getElementById('topNav');
+  if (!topNav) return;
+  var bsCollapse = new bootstrap.Collapse(topNav, { toggle: false });
+  topNav.querySelectorAll('.nav-link').forEach(function(a){
+    a.addEventListener('click', function(){ bsCollapse.hide(); });
+  });
+});
+
+
+
+
+
+  const relSwiper = new Swiper('.related-swiper', {
+    slidesPerView: 4,
+    spaceBetween: 16,
+    navigation: {
+      nextEl: '.rel-next',
+      prevEl: '.rel-prev',
+    },
+   
+    breakpoints: {
+      0:   { slidesPerView: 2, spaceBetween: 12 },
+      576: { slidesPerView: 2, spaceBetween: 14 },
+      768: { slidesPerView: 3, spaceBetween: 16 },
+      992: { slidesPerView: 4, spaceBetween: 16 }
+    }
+  });
+
+
+
+</script>
+<script>
+/* thumbs -> main image ONLY (no zoom from thumbs) */
+(function(){
+  const mainImg = document.getElementById('mainImg');
+  const thumbs  = document.querySelectorAll('#thumbs .thumb');
+
+  thumbs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      // active state
+      thumbs.forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      // swap
+      const src = btn.dataset.full || btn.querySelector('img')?.src;
+      if(src){
+        mainImg.src = src;
+        mainImg.alt = 'Product image';
+      }
+    });
+  });
+})();
+
+/* keep zoom ONLY on main image (optional) */
+(function(){
+  const lb = document.getElementById('lightbox');
+  if(!lb) return; // if you removed the lightbox HTML, skip
+  const lbImg = document.getElementById('lbImg');
+  const lbClose = document.getElementById('lbClose');
+  const mainBox = document.getElementById('mainBox');
+  const mainImg = document.getElementById('mainImg');
+
+  function openLB(src){
+    lbImg.src = src;
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden','false');
+    document.body.classList.add('lb-locked');
+  }
+  function closeLB(){
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden','true');
+    document.body.classList.remove('lb-locked');
+    setTimeout(()=> lbImg.removeAttribute('src'), 200);
+  }
+
+  // zoom only from main image
+  mainBox.addEventListener('click', ()=> openLB(mainImg.src));
+  lbClose.addEventListener('click', closeLB);
+  lb.addEventListener('click', e=>{ if(e.target===lb) closeLB(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && lb.classList.contains('is-open')) closeLB(); });
+})();
+</script>
