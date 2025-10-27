@@ -6,7 +6,7 @@
     <title>Emirates Robotics Contact Us</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="contact.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -53,91 +53,91 @@
 <div class="container-fluid">
 
   <!-- Banner -->
-  <div class="mini-banner">
-    <h1><span>About Us</span></h1>
-  </div>
+  <div class="mini-banner"><h1><span>Contact Us</span></h1></div>
 
-  <!-- Intro (optional) -->
-  <section  style="margin-bottom:10px">
-    <p class="lead">
-      We build reliable flow-control solutions — valves, actuators, and engineered systems —
-      with an obsession for quality and on-time service. Since 2012, our team has helped
-      utilities and industries run safer and smarter.
-    </p>
+  <!-- Info + Form -->
+  <section class="grid">
+
+    <!-- Info -->
+    <aside class="info">
+      <h2>Get in touch</h2>
+      <p>Questions about valves, actuators, or services? We’re happy to help.</p>
+
+      <div class="list">
+        <div class="item">
+          <div class="icn i-phone"></div>
+          <div>
+            <b>Phone</b>
+            <a href="tel:+911234567890">+91 12345 67890</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icn i-mail"></div>
+          <div>
+            <b>Email</b>
+            <a href="mailto:info@example.com">info@example.com</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icn i-pin"></div>
+          <div>
+            <b>Address</b>
+            2nd Floor, Tech Park, Kochi, Kerala 682030
+          </div>
+        </div>
+        <div class="item">
+          <div class="icn i-clock"></div>
+          <div>
+            <b>Hours</b>
+            Mon–Sat: 9:30 AM – 6:30 PM
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Form -->
+    <div class="card">
+      <h2>Send us a message</h2>
+
+      <form class="form" action="#" method="post">
+        <div class="fg">
+          <input id="name" name="name" type="text" placeholder=" " required>
+          <label for="name">Full name *</label>
+        </div>
+        <div class="fg">
+          <input id="email" name="email" type="email" placeholder=" " required>
+          <label for="email">Email *</label>
+        </div>
+        <div class="fg">
+          <input id="phone" name="phone" type="tel" placeholder=" ">
+          <label for="phone">Phone</label>
+        </div>
+        <div class="fg">
+          <input id="subject" name="subject" type="text" placeholder=" ">
+          <label for="subject">Subject</label>
+        </div>
+        <div class="fg full">
+          <textarea id="msg" name="message" placeholder=" " required></textarea>
+          <label for="msg">Message *</label>
+        </div>
+        <div class="full">
+          <button class="btns" type="submit">Send Message</button>
+        </div>
+      </form>
+    </div>
   </section>
 
-  <!-- Zig-zag blocks -->
-  <section class="zigzag">
-
-    <!-- Row 1: image left, text right -->
-    <article class="zz-item">
-      <div class="zz-media">
-        <div class="ratio">
-          <img src="Image_1.webp" alt="Our manufacturing & assembly area">
-        </div>
-      </div>
-      <div class="zz-body">
-        <span class="zz-eyebrow">Who we are</span>
-        <h2 class="zz-title">Engineering-first. Customer-obsessed.</h2>
-        <p class="zz-text">
-          From application study to commissioning, we partner with OEMs and plant teams
-          to specify the right solution — not just a part number. Our domain expertise spans
-          water, HVAC, power, and process industries.
-        </p>
-        <ul class="zz-points">
-          <li>Certified sourcing & stringent QA checks</li>
-          <li>Application-driven sizing & selection</li>
-          <li>Local inventory & quick turnarounds</li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Row 2: text left, image right -->
-    <article class="zz-item">
-      <div class="zz-body">
-        <span class="zz-eyebrow">What we do</span>
-        <h2 class="zz-title">Valves, actuators & packaged solutions</h2>
-        <p class="zz-text">
-          We offer a full lineup of butterfly, globe, ball and knife gate valves with pneumatic/electric
-          actuation, plus skids and control accessories built to spec.
-        </p>
-        <ul class="zz-points">
-          <li>DN15–DN1200, PN10–PN40 options</li>
-          <li>Materials: CI/DI/WCB/CF8/CF8M with EPDM, NBR, PTFE seats</li>
-          <li>Accessories: positioners, solenoids, limit switches & air sets</li>
-        </ul>
-      </div>
-      <div class="zz-media">
-        <div class="ratio">
-          <img src="Image_7.webp" alt="Packaged valve and actuator solutions">
-        </div>
-      </div>
-    </article>
-
-    <!-- Row 3: image left, text right -->
-    <article class="zz-item">
-      <div class="zz-media">
-        <div class="ratio">
-          <img src="Image_2.webp" alt="Our field service and support team">
-        </div>
-      </div>
-      <div class="zz-body">
-        <span class="zz-eyebrow">How we work</span>
-        <h2 class="zz-title">Service that goes beyond dispatch</h2>
-        <p class="zz-text">
-          Our support doesn’t end at delivery. We assist with installation, commissioning,
-          and lifecycle maintenance to keep your operations running.
-        </p>
-        <ul class="zz-points">
-          <li>On-site audits & commissioning</li>
-          <li>AMC & spares planning</li>
-          <li>Documentation & compliance support</li>
-        </ul>
-      </div>
-    </article>
-
+  <!-- Google Map -->
+  <section class="map-wrap">
+    <!-- Replace with your embed URL -->
+    <iframe
+      class="map"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=Infopark%20Kochi&output=embed">
+    </iframe>
   </section>
-</div>
 
 
 
@@ -156,49 +156,9 @@
 
 
 
-<!-- Vision & Mission -->
-<!-- ===== Vision & Mission (Alt Design) ===== -->
-<section class="vm-alt">
-  <div class="vm-alt__wrap">
-    <!-- Vision -->
-    <article class="vm-alt__pane vm-alt__left">
-      <div class="vm-alt__icon">👁️</div>
-      <h3 class="vm-alt__title">Our Vision</h3>
-      <p class="vm-alt__text">
-        Become the most trusted flow-control partner—advancing reliability, response,
-        and engineering depth for safer, cleaner, more efficient plants.
-      </p>
-      <ul class="vm-alt__points">
-        <li><span>01</span>Relentless product reliability</li>
-        <li><span>02</span>Service excellence at every touchpoint</li>
-        <li><span>03</span>Sustainable, future-ready solutions</li>
-      </ul>
-    </article>
-
-    <!-- Mission -->
-    <article class="vm-alt__pane vm-alt__right">
-      <div class="vm-alt__icon">🎯</div>
-      <h3 class="vm-alt__title">Our Mission</h3>
-      <p class="vm-alt__text">
-        Deliver right-fit valve & actuator solutions—sized to the application, stocked locally,
-        and supported through commissioning and lifecycle.
-      </p>
-      <ul class="vm-alt__points">
-        <li><span>01</span>Engineer-first application study</li>
-        <li><span>02</span>Quick-turn inventory & spares</li>
-        <li><span>03</span>Lifecycle care & compliance</li>
-      </ul>
-    </article>
-  </div>
-</section>
 
 
 
-
-
-
-
-<br>
 
 
 <!-- Newsletter band -->

@@ -80,8 +80,9 @@
 .btn-brand{
   background:var(--brand); color:#fff; border-radius:.6rem; font-weight:600;
   box-shadow:0 12px 24px rgba(var(--brand-rgb),.18); padding:.6rem 1rem;
+  border-radius:999px; text-decoration:none;
 }
-.btn-brand:hover{ color:#fff; filter:brightness(1.05);
+.btn-brand:hover{ color:#1C3D73; background-color: #5f89c7; filter:brightness(1.05);
   box-shadow:0 14px 28px rgba(var(--brand-rgb),.22);
 }
 
