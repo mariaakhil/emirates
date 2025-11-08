@@ -6,19 +6,292 @@
     <title>Emirates Robotics Product Details</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="product_detail.css">
-   
+     <link rel="stylesheet" href="product_detail.css">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
+<style>
+   :root{
+    --brand:#1C3D73;
+    --dot:#10b981;
+    --text:#111827;
+    --muted:#4b5563;
+    --bg:#ffffff;
+    --ring:rgba(16,185,129,.14);
+  }
+
+  .pd-wrap{padding:20px 0; background:var(--bg);}
+  .pd-container{max-width:1200px; margin:0 auto; padding:0 16px;}
+
+  /* GRID */
+  .pd-grid{display:grid; gap:20px; grid-template-columns:1fr;}
+  @media (min-width:768px){ .pd-grid{gap:24px;} }
+  @media (min-width:992px){
+    .pd-grid{ grid-template-columns: 1.1fr 0.9fr; align-items:start; }
+    .pd-content{ order:1; }
+    .pd-gallery{ order:2; }
+  }
+
+  /* TEXT */
+  .pd-title{
+    margin:0 0 10px;
+    font-size: clamp(1.25rem, 1.05rem + 1.2vw, 2rem);
+    color:var(--brand); font-weight:800; line-height:1.2;
+  }
+  .pd-content p{
+    color:var(--muted); line-height:1.8; margin:0 0 14px; text-align:justify;
+    font-size: clamp(.95rem, .9rem + .3vw, 1.05rem);
+    max-width: 70ch;
+  }
+
+  /* BULLETS */
+  .pd-bullets{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px;}
+  .pd-bullets li{
+    position:relative; padding-left:28px; color:var(--text);
+    font-size: clamp(.95rem, .9rem + .3vw, 1.05rem);
+  }
+  .pd-bullets li::before{
+    content:""; position:absolute; left:0; top:.55em;
+    width:14px; height:14px; border-radius:50%; background:var(--dot); box-shadow:0 0 0 5px var(--ring);
+  }
+  @media (min-width:992px){
+    .pd-bullets{grid-template-columns:repeat(2, minmax(0,1fr));}
+  }
+
+  /* GALLERY */
+  .pd-gallery{display:flex; flex-direction:column; gap:10px;}
+  .ratio-16x9{position:relative; width:100%; padding-top:56.25%; overflow:hidden; border-radius:8px; background:#f3f4f6;}
+  .ratio-16x9 > img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:8px;}
+
+  /* THUMBS */
+  .pd-thumbs{
+    display:flex; gap:10px; overflow-x:auto; padding:4px 2px 8px;
+    -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity;
+  }
+  .pd-thumbs::-webkit-scrollbar{height:8px}
+  .pd-thumbs::-webkit-scrollbar-thumb{background:#e5e7eb; border-radius:8px}
+  .pd-thumb{
+    flex:0 0 auto; width:92px; height:64px; border:0; padding:0; background:#fff;
+    border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.08);
+    cursor:pointer; scroll-snap-align:start;
+    outline:2px solid transparent; transition:outline-color .15s ease, transform .1s ease;
+  }
+  .pd-thumb:hover{ transform:translateY(-1px); }
+  .pd-thumb.is-active{ outline-color:var(--brand); }
+  .pd-thumb img{ width:100%; height:100%; object-fit:cover; border-radius:8px; display:block; }
+
+  /* Small phones */
+  @media (max-width:380px){
+    .pd-thumb{ width:108px; height:72px; }
+    .pd-content p{ line-height:1.75; }
+  }
+
+  /* motion respect */
+  @media (prefers-reduced-motion: reduce){
+    .pd-thumb{ transition:none; }
+  }
+  /* 1) Make every image inside the product block fluid */
+.pd-wrap img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+/* 2) Main image container: use native aspect-ratio (with fallback) */
+.ratio-16x9{
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  background:#f3f4f6;
+
+  /* modern browsers */
+  aspect-ratio:16 / 9;
+  height:auto;
+}
+
+/* fallback for older browsers that don't support aspect-ratio */
+@supports not (aspect-ratio: 1){
+  .ratio-16x9{ padding-top:56.25%; }
+  .ratio-16x9 > img{ position:absolute; inset:0; }
+}
+
+/* 3) Main image must always fill its box without distortion */
+.ratio-16x9 > img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* 4) Thumbnails scale with viewport (so they’re responsive) */
+.pd-thumb{
+  flex:0 0 auto;
+  width:clamp(84px, 18vw, 112px);
+  height:clamp(56px, 12vw, 72px);
+}
+
+/* 5) If some global theme is forcing fixed widths, uncomment this */
+/* .pd-wrap img{ max-width:100% !important; height:auto !important; } */
+
+
+:root{ --docs-brand:#1C3D73; --docs-muted:#6b7280; --docs-soft:#eef2f7; }
+
+.docs-wrap{ padding:18px 0 24px; background:#fff; }
+.docs-container{ max-width:1200px; margin:0 auto; padding:0 16px; }
+
+.docs-title{
+  font-size: clamp(1.1rem, 1rem + .6vw, 1.4rem);
+  font-weight: 800; color: var(--docs-brand);
+  margin: 10px 0 10px;
+}
+
+/* Approvals logos grid */
+.docs-logos{
+  display:grid; gap:12px;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+.docs-logos img{
+  width:100%; height:100px; object-fit:contain;
+  background:var(--docs-soft); border-radius:12px; padding:10px; display:block;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+@media (min-width:768px){ .docs-logos{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (min-width:992px){ .docs-logos{ grid-template-columns: repeat(5, minmax(0,1fr)); } }
+
+/* Certifications grid (clickable thumbnails) */
+.docs-certs{
+  display:grid; gap:12px;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+@media (min-width:768px){ .docs-certs{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (min-width:992px){ .docs-certs{ grid-template-columns: repeat(4, minmax(0,1fr)); } }
+
+.cert-item{
+  appearance:none; border:0; padding:0; background:#fff; cursor:pointer; border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06); overflow:hidden;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.cert-item:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.12); }
+.cert-item img{ width:100%; height:160px; object-fit:cover; display:block; }
+
+/* Lightbox */
+.lb{
+  position:fixed; inset:0; background:rgba(0,0,0,.75);
+  display:none; align-items:center; justify-content:center; padding:16px; z-index:1050;
+}
+.lb.is-open{ display:flex; }
+.lb-img{ max-width:min(96vw,1200px); max-height:86vh; width:auto; height:auto; border-radius:10px; box-shadow:0 12px 40px rgba(0,0,0,.4); }
+.lb-close{
+  position:absolute; top:10px; right:12px; width:42px; height:42px; border-radius:50%;
+  background:#fff; color:#000; border:0; font-size:28px; line-height:1; cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,.2);
+}
+
+
+
+
+
+
+
+
+/* ===== Stay Connected form styles ===== */
+:root{
+  --cf-brand: #1C3D73;      /* deep green (adjust to your brand) */
+  --cf-text:#0f172a;       /* dark text */
+  --cf-muted:#6b7280;      /* muted labels */
+  --cf-card:#ffffff;       /* card background */
+  --cf-line:#d1d5db;       /* input underline (idle) */
+  --cf-shadow:0 12px 32px rgba(0,0,0,.12);
+  --cf-radius:10px;
+}
+
+.cf-wrap{
+  padding: clamp(16px, 3vw, 28px) 16px;
+  background: transparent;           /* sits on top of your hero/section */
+  display:flex; justify-content:center;
+}
+
+.cf-card{
+  width:min(920px, 100%);
+  background:var(--cf-card);
+  border-radius:var(--cf-radius);
+  box-shadow:var(--cf-shadow);
+  padding: clamp(18px, 3.2vw, 32px);
+}
+
+.cf-title{
+  margin:0;
+  text-align:center;
+  letter-spacing:.04em;
+  font-weight:800;
+  color:var(--cf-brand);
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+}
+
+.cf-divider{
+  height:1px; background:#e5e7eb; margin:12px 0 18px; position:relative;
+}
+.cf-divider span{
+  position:absolute; left:50%; top:-1px; transform:translateX(-50%);
+  width:96px; height:3px; background:var(--cf-brand); border-radius:999px;
+}
+
+/* grid for first row */
+.cf-form{ display:grid; gap:16px; }
+.cf-row{
+  display:grid; gap:16px;
+  grid-template-columns:1fr;
+}
+@media (min-width:768px){
+  .cf-row{ grid-template-columns:1fr 1fr 1fr; }
+}
+
+/* underlined fields */
+.cf-field{ display:flex; flex-direction:column; }
+.cf-field label{
+  font-size:.95rem; color:var(--cf-muted); margin-bottom:6px;
+}
+.cf-field input,
+.cf-field textarea{
+  border:none; outline:none; background:transparent;
+  border-bottom:2px solid var(--cf-line);
+  padding:.4rem 0 .5rem 0; color:var(--cf-text);
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.cf-field textarea{ resize:vertical; }
+.cf-field input:focus,
+.cf-field textarea:focus{
+  border-bottom-color:var(--cf-brand);
+  box-shadow:0 2px 0 -1px var(--cf-brand);
+}
+
+.cf-full{ grid-column:1/-1; }
+
+/* submit button */
+.cf-btn{
+  display:inline-block; min-width:170px;
+  margin-top: 6px;
+  padding:.9rem 1.25rem;
+  border:0; border-radius:6px;
+  background:var(--cf-brand); color:#fff; font-weight:700; letter-spacing:.02em;
+  transition:filter .15s ease, transform .05s ease;
+}
+.cf-btn:hover{ filter:brightness(.96); }
+.cf-btn:active{ transform:translateY(1px); }
+
+/* responsive safety */
+@media (max-width:420px){
+  .cf-card{ padding:16px 14px; }
+}
+
+</style>
 <body>
   
 
 <nav class="navbar navbar-expand-lg sticky-top main-nav">
   <div class="container nav-grid">
     <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
-      <img src="logo.jpg" alt="Logo" class="site-logo">
+      <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="site-logo">
     </a>
 
     <button class="navbar-toggler shadow-none border-0" type="button"
@@ -29,11 +302,11 @@
 
     <div class="collapse navbar-collapse justify-content-lg-end shift-desktop" id="topNav">
   <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 me-lg-3">
-    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
-    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About Us</a></li>
-    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" href="{% url 'solutions' %}">Solutions</a></li>
-    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'products' %}active{% endif %}" href="{% url 'products' %}">Products</a></li>
-    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}" href="{% url 'blog_list' %}">Blogs</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Solutions</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">Products</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'blogs' %}">Blogs</a></li>
   </ul>
 
   <!-- Mobile CTA (inside drawer) -->
@@ -53,180 +326,151 @@
 
 
 
+<!-- ============ PRODUCT DETAIL ============ -->
+<!-- ============ PRODUCT DETAIL (RESPONSIVE) ============ -->
+<section class="pd-wrap">
+  <div class="pd-container">
+    <div class="pd-grid">
+      <!-- GALLERY (moves first on mobile) -->
+      <div class="pd-gallery">
+        <div class="pd-main ratio-16x9">
+          <img id="pdMainImg"
+               src="https://images.unsplash.com/photo-1581091014534-8987c1d647d1?q=80&w=1600&auto=format&fit=crop"
+               alt="GRP Water Tank" loading="lazy">
+        </div>
 
-
-<div class="heading" style="text-align: center; font-size: 50px; font-weight: bold;">
-    Product Details
-</div>
- 
-
-  <section class="detail-wrap">
-
-    <!-- LEFT: GALLERY -->
-    <div class="gallery">
-      <div class="gallery-main" id="mainBox">
-        <img id="mainImg" src="Image_2.webp" alt="Pneumatic Butterfly Valve">
-      </div>
-
-      <div class="gallery-thumbs" id="thumbs">
-        <button class="thumb is-active" data-full="image_2.webp">
-          <img src="Image_2.webp" alt="">
-        </button>
-        <button class="thumb" data-full="Image_4.webp">
-          <img src="Image_4.webp" alt="">
-        </button>
-        <button class="thumb" data-full="image_10.webp">
-          <img src="Image_10.webp" alt="">
-        </button>
-        <button class="thumb" data-full="Image_5.webp">
-          <img src="Image_5.webp" alt="">
-        </button>
-        <button class="thumb" data-full="image_5.webp">
-          <img src="Image_5.webp" alt="">
-        </button>
-      </div>
-    </div>
-
-    <!-- RIGHT: INFO -->
-    <div class="info">
-     
- <h1 class="product-title">Pneumatic Butterfly Valve</h1>
-      
-
-      <!-- Description & Specs -->
-      <div class="accordion">
-        <details open>
-          <summary>Description <span class="chev">›</span></summary>
-          <div class="acc-body">
-            Compact, quarter-turn valve designed for on/off and throttling service in HVAC, water,
-            and general industrial applications. High cycle life actuator with NAMUR interface.
-
-
-              Compact, quarter-turn valve designed for on/off and throttling service in HVAC, water,
-            and general industrial applications. High cycle life actuator with NAMUR interface.
-         
-              Compact, quarter-turn valve designed for on/off and throttling service in HVAC, water,
-            and general industrial applications. High cycle life actuator with NAMUR interface.
-         
-              Compact, quarter-turn valve designed for on/off and throttling service in HVAC, water,
-            and general industrial applications. High cycle life actuator with NAMUR interface.
-         
-          </div>
-        </details>
-
-       <div class="actions">
-        <a class="btn btn-primary" href="#enquiry">Enquire Now</a>
+        <div class="pd-thumbs" id="pdThumbs">
+          <button class="pd-thumb is-active" aria-label="Image 1"
+                  data-src="">
+            <img src="" alt="">
+          </button>
+          <button class="pd-thumb" aria-label="Image 2"
+                  data-src="">
+            <img src="" alt="">
+          </button>
+          <button class="pd-thumb" aria-label="Image 3"
+                  data-src="">
+            <img src="" alt="">
+          </button>
         
+        </div>
       </div>
+
+      <!-- CONTENT -->
+      <div class="pd-content">
+        <h1 class="pd-title">The Prime GRP Water Tank Providers in UAE</h1>
+
+        <p>We manufacture and offer one of the largest ranges of GRP Panel Tanks in the UAE for the storage of potable, drinking, and cold water as well as hot water, chemicals, and solutions for effluent and waste...</p>
+
+        <p>Thanks to contemporary improvements in water storage—keeping light, insects, and debris out and lowering the chance of any bacteria—Sungil GRP Water Tank can keep the water inside fresh as long as possible.</p>
+
+        <p>We have a wide selection of sizes that satisfy a wide range of client requirements. Our tanks are constructed to the highest standards and comply with international standards for potable water storage.</p>
+
+        <ul class="pd-bullets">
+          <li>Excellent hygiene standards</li>
+          <li>Exceptional view</li>
+          <li>Simple to construct and disassemble</li>
+          <li>Simple to swap out</li>
+          <li>Optimal structural stability</li>
+          <li>A variety of capacities</li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- (Optional) simple anchor for enquiry -->
-  <div id="enquiry" style="margin-top:36px"></div>
-</div>
-
-<!-- Lightbox (zoom) -->
-<div class="lb" id="lightbox" aria-hidden="true" role="dialog">
-  <button class="lb__close" id="lbClose" aria-label="Close">&times;</button>
-  <img class="lb__img" id="lbImg" alt="">
-</div>
-
-
-
-
-
-
-
-
-
-<br>
-<section class="related-wrap">
-  <div class="related-head">
-    <h2 class="related-title" style="text-align: center;">Related Products</h2>
-
-    <!-- arrows -->
-    <div class="related-arrows">
-      <button class="rel-prev" aria-label="Previous"><span>‹</span></button>
-      <button class="rel-next" aria-label="Next"><span>›</span></button>
     </div>
   </div>
-
-  <!-- Slider -->
-  <div class="swiper related-swiper container">
-    <div class="swiper-wrapper">
-
-      <!-- Slide (card) -->
-      <div class="swiper-slide">
-        <article class="rel-card">
-          <a class="rel-media" href="#">
-            <img src="Image_6.webp" alt="Ball Control Valve">
-          </a>
-          <div class="rel-body">
-            <h3 class="rel-name">Ball Control Valve</h3>
-            <a class="btn btn-ghost" href="#">Details</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="swiper-slide">
-        <article class="rel-card">
-          <a class="rel-media" href="#">
-            <img src="Image_8.webp" alt="Globe Control Valve">
-          </a>
-          <div class="rel-body">
-            <h3 class="rel-name">Globe Control Valve</h3>
-            <a class="btn btn-ghost" href="#">Details</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="swiper-slide">
-        <article class="rel-card">
-          <a class="rel-media" href="#">
-            <img src="Image_3.webp" alt="Pneumatic Actuator">
-          </a>
-          <div class="rel-body">
-            <h3 class="rel-name">Pneumatic Actuator</h3>
-            <a class="btn btn-ghost" href="#">Details</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="swiper-slide">
-        <article class="rel-card">
-          <a class="rel-media" href="#">
-            <img src="Image_9.webp" alt="Butterfly Valve">
-          </a>
-          <div class="rel-body">
-            <h3 class="rel-name">Butterfly Valve</h3>
-            <a class="btn btn-ghost" href="#">Details</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="swiper-slide">
-        <article class="rel-card">
-          <a class="rel-media" href="#">
-            <img src="Image_10.webp" alt="Knife Gate Valve">
-          </a>
-          <div class="rel-body">
-            <h3 class="rel-name">Knife Gate Valve</h3>
-            <a class="btn btn-ghost" href="#">Details</a>
-          </div>
-        </article>
-      </div>
-
-      <!-- add more slides as needed -->
+</section>
+<!-- ============ APPROVALS & CERTIFICATIONS (IMAGE GRIDS) ============ -->
+<section class="docs-wrap">
+  <div class="docs-container">
+    <!-- Approvals (logos) -->
+    <h2 class="docs-title">Approvals</h2>
+    <div class="docs-logos">
+      <!-- Replace with your logos -->
+      <img src="https://dummyimage.com/260x120/edf2f7/111827&text=ISO" alt="ISO">
+      <img src="https://dummyimage.com/260x120/edf2f7/111827&text=WRAS" alt="WRAS">
+      <img src="https://dummyimage.com/260x120/edf2f7/111827&text=NSF" alt="NSF">
+      <img src="https://dummyimage.com/260x120/edf2f7/111827&text=UL" alt="UL">
+      <img src="https://dummyimage.com/260x120/edf2f7/111827&text=FM" alt="FM">
     </div>
 
-    <!-- dots -->
-   
+    <!-- Certifications (clickable images) -->
+    <h2 class="docs-title mt-4">Certifications</h2>
+    <div class="docs-certs">
+      <!-- Each item is a button with a thumbnail; clicking opens a lightbox -->
+      <button class="cert-item" data-full="https://images.unsplash.com/photo-1543349689-9a4d426bee8e?q=80&w=1600&auto=format&fit=crop" aria-label="Certificate 1">
+        <img src="https://images.unsplash.com/photo-1543349689-9a4d426bee8e?q=80&w=480&auto=format&fit=crop" alt="Certificate 1">
+      </button>
+      <button class="cert-item" data-full="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop" aria-label="Certificate 2">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=480&auto=format&fit=crop" alt="Certificate 2">
+      </button>
+      <button class="cert-item" data-full="https://images.unsplash.com/photo-1541560052-77ec1bbc09f7?q=80&w=1600&auto=format&fit=crop" aria-label="Certificate 3">
+        <img src="https://images.unsplash.com/photo-1541560052-77ec1bbc09f7?q=80&w=480&auto=format&fit=crop" alt="Certificate 3">
+      </button>
+      <button class="cert-item" data-full="https://images.unsplash.com/photo-1486946255434-2466348c2166?q=80&w=1600&auto=format&fit=crop" aria-label="Certificate 4">
+        <img src="https://images.unsplash.com/photo-1486946255434-2466348c2166?q=80&w=480&auto=format&fit=crop" alt="Certificate 4">
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightweight Lightbox -->
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <img class="lb-img" id="lbImg" alt="">
+</div>
+
+
+
+
+
+<!-- ============ STAY CONNECTED FORM ============ -->
+<section class="cf-wrap">
+  <div class="cf-card">
+    <h2 class="cf-title">STAY CONNECTED</h2>
+    <div class="cf-divider">
+      <span></span>
+    </div>
+
+    <form class="cf-form" action="{% url 'contact_view' %}" method="post" novalidate>
+      {% csrf_token %}
+
+      <!-- 3-inline fields on desktop, stacked on mobile -->
+      <div class="cf-row">
+        <div class="cf-field">
+          <label for="cf_name">Name</label>
+          <input id="cf_name" name="name" type="text" required>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf_email">Email</label>
+          <input id="cf_email" name="email" type="email" required>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf_phone">Phone</label>
+          <input id="cf_phone" name="phone" type="tel">
+        </div>
+      </div>
+
+      <div class="cf-field cf-full">
+        <label for="cf_msg">Message</label>
+        <textarea id="cf_msg" name="message" rows="4" required></textarea>
+      </div>
+
+      <div class="text-center">
+        <button class="cf-btn" type="submit">SUBMIT</button>
+      </div>
+    </form>
   </div>
 </section>
 
 
-<br>
+
+
+
+
+
+
+
 <!-- Newsletter band -->
 <section class="nl-band">
   <div class="container">
@@ -253,7 +497,7 @@
     <!-- top grid -->
     <div class="row g-4 g-lg-5 align-items-start">
       <div class="col-md-6 col-lg-4">
-        <img src="logo.jpg" alt="Emirates Robotics" class="footer-logo mb-3">
+        <img src="{% static 'images/logo.jpg' %}" alt="Emirates Robotics" class="footer-logo mb-3">
       </div>
 
       <div class="col-6 col-md-3 col-lg-2">
@@ -420,3 +664,58 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('keydown', e=>{ if(e.key==='Escape' && lb.classList.contains('is-open')) closeLB(); });
 })();
 </script>
+<script>
+  // Simple thumb -> main image swap
+  (function(){
+    const main = document.getElementById('pdMainImg');
+    const thumbs = document.querySelectorAll('.pd-thumb');
+    thumbs.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        thumbs.forEach(b=>b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const big = btn.getAttribute('data-src');
+        if (big && main) main.src = big;
+      });
+    });
+  })();
+
+
+
+
+
+
+
+
+  
+  // Open certificate image in lightbox
+  (function(){
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    document.querySelectorAll('.cert-item').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const src = btn.getAttribute('data-full') || btn.querySelector('img')?.src;
+        if(!src) return;
+        lbImg.src = src;
+        lb.classList.add('is-open');
+        lb.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      });
+    });
+
+    function closeLB(){
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden','true');
+      lbImg.removeAttribute('src');
+      document.body.style.overflow='';
+    }
+    lbClose.addEventListener('click', closeLB);
+    lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && lb.classList.contains('is-open')) closeLB(); });
+  })();
+</script>
+
+
+</body>
+</html>

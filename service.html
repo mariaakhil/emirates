@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emirates Robotics Product Details</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="service.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  
+
+<nav class="navbar navbar-expand-lg sticky-top main-nav">
+  <div class="container nav-grid">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
+      <img src="logo.jpg" alt="Logo" class="site-logo">
+    </a>
+
+    <button class="navbar-toggler shadow-none border-0" type="button"
+            data-bs-toggle="collapse" data-bs-target="#topNav"
+            aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-lg-end shift-desktop" id="topNav">
+  <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 me-lg-3">
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About Us</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" href="{% url 'solutions' %}">Solutions</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'products' %}active{% endif %}" href="{% url 'products' %}">Products</a></li>
+    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}" href="{% url 'blog_list' %}">Blogs</a></li>
+  </ul>
+
+  <!-- Mobile CTA (inside drawer) -->
+  <a href="{% url 'contact' %}" class="btn btn-brand w-100 d-lg-none mt-3">Call to Teach</a>
+
+</div>
+
+<!-- Desktop CTA (right side) -->
+<a href="{% url 'contact' %}" class="btn btn-brand d-none d-lg-inline-flex px-3">Call to Teach</a>
+</div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+
+  <!-- Banner -->
+  <div class="mini-banner">
+    <h1><span>Our Services</span></h1>
+  </div>
+
+  <p class="intro">
+    From sizing and selection to commissioning, we deliver end-to-end flow-control solutions tailored to your application.
+  </p>
+
+  <!-- Services Grid -->
+  <section class="s-grid">
+
+    <!-- Service card -->
+    <article class="s-card">
+      <a class="s-media" href="#">
+        <div class="ratio">
+          <img src="https://picsum.photos/seed/s1/800/600" alt="Valve Sizing & Selection">
+        </div>
+      </a>
+      <div class="s-body">
+        <span class="s-eyebrow">Engineering</span>
+        <h2 class="s-title">Valve Sizing & Selection</h2>
+        <p class="s-text">Application study, Kv/Cv checks, and materials selection to fit your service conditions.</p>
+        <div class="s-foot">
+          <a class="btn btn-primary" href="#">Enquire</a>
+          <a class="btn btn-ghost" href="#">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="s-card">
+      <a class="s-media" href="#">
+        <div class="ratio">
+          <img src="https://picsum.photos/seed/s2/800/600" alt="Actuation & Automation">
+        </div>
+      </a>
+      <div class="s-body">
+        <span class="s-eyebrow">Automation</span>
+        <h2 class="s-title">Actuation & Controls</h2>
+        <p class="s-text">Pneumatic/electric actuators, positioners, solenoids, and limit switches with ISO 5211 mounting.</p>
+        <div class="s-foot">
+          <a class="btn btn-primary" href="#">Enquire</a>
+          <a class="btn btn-ghost" href="#">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="s-card">
+      <a class="s-media" href="#">
+        <div class="ratio">
+          <img src="https://picsum.photos/seed/s3/800/600" alt="Packaged Skid Solutions">
+        </div>
+      </a>
+      <div class="s-body">
+        <span class="s-eyebrow">Solutions</span>
+        <h2 class="s-title">Packaged Skids</h2>
+        <p class="s-text">Custom-built valve/actuator skids with piping, gauges, and documentation.</p>
+        <div class="s-foot">
+          <a class="btn btn-primary" href="#">Enquire</a>
+          <a class="btn btn-ghost" href="#">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="s-card">
+      <a class="s-media" href="#">
+        <div class="ratio">
+          <img src="https://picsum.photos/seed/s4/800/600" alt="Field Service & Commissioning">
+        </div>
+      </a>
+      <div class="s-body">
+        <span class="s-eyebrow">Service</span>
+        <h2 class="s-title">Field Commissioning</h2>
+        <p class="s-text">On-site installation, setup, and performance checks to get you running safely.</p>
+        <div class="s-foot">
+          <a class="btn btn-primary" href="#">Enquire</a>
+          <a class="btn btn-ghost" href="#">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- add more cards as needed -->
+  </section>
+
+  <!-- How it works -->
+  <section class="how">
+    <h2 class="how-head">How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <div>
+          <b>Consult</b>
+          <p>Share your application data (medium, temp, ΔP). We identify the right approach.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <div>
+          <b>Engineer</b>
+          <p>We size, select materials, and spec the actuation & accessories.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <div>
+          <b>Build</b>
+          <p>Assemble, test, and document. Ready with spares & drawings.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <div>
+          <b>Commission</b>
+          <p>On-site installation, tuning, and handover with training.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h3>Need a quote or site visit?</h3>
+    <div class="cta-actions">
+      <a class="btn" href="tel:+911234567890">Call us</a>
+      <a class="btn" href="/contact">Contact form</a>
+      <a class="btn" href="https://maps.google.com/?q=Infopark%20Kochi" target="_blank" rel="noopener">Find us on Maps</a>
+    </div>
+  </section>
+
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Newsletter band -->
+<section class="nl-band">
+  <div class="container">
+    <div class="row align-items-center g-3 g-lg-4">
+      <div class="col-lg-7">
+        <h3 class="nl-title mb-2 mb-lg-3">Subscribe to our newsletter</h3>
+        <p class="nl-text mb-0">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <form class="nl-form d-flex">
+          <input type="email" class="form-control nl-input" placeholder="Your email" required>
+          <button class="btn btn-nl ms-2" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <!-- top grid -->
+    <div class="row g-4 g-lg-5 align-items-start">
+      <div class="col-md-6 col-lg-4">
+        <img src="logo.jpg" alt="Emirates Robotics" class="footer-logo mb-3">
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="ft-head">About</h6>
+        <ul class="ft-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Solutions</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="ft-head">Information</h6>
+        <ul class="ft-links">
+          <li><a href="#">Contacts</a></li>
+          <li><a href="#">Our team</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="ft-head">Service</h6>
+        <ul class="ft-links">
+          <li><a href="#">Pages</a></li>
+          <li><a href="#">Elements</a></li>
+          <li><a href="#">Site map</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="ft-head">Social</h6>
+        <div class="d-flex gap-2">
+          <a class="soc" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="soc" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a class="soc" href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="ft-sep">
+
+    <!-- contacts row -->
+    <div class="row g-3 g-md-4">
+      <div class="col-md-4">
+        <h6 class="ft-sub">Contacts</h6>
+        <div class="ft-muted">+1 601-201-5880</div>
+        <a class="ft-link" href="mailto:ensome@info.co.us">ensome@info.co.us</a>
+      </div>
+      <div class="col-md-4">
+        <h6 class="ft-sub">&nbsp;</h6>
+        <div class="ft-muted">1642 Washington Avenue, Jackson, MS, 39201</div>
+        <a class="ft-link" href="#">Googlemap →</a>
+      </div>
+    </div>
+
+    <hr class="ft-sep">
+
+    <!-- bottom bar -->
+    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2">
+      <div class="d-flex gap-4">
+        <a class="ft-link" href="#">Privacy policy →</a>
+        <a class="ft-link" href="#">Terms of use →</a>
+      </div>
+      <div class="ft-copy">© 2025 Emirates Robotics LLC. All Rights Reserved.</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS bundle (once) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- jQuery (required by Owl) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Optional: auto-close drawer after clicking a link -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var topNav = document.getElementById('topNav');
+  if (!topNav) return;
+  var bsCollapse = new bootstrap.Collapse(topNav, { toggle: false });
+  topNav.querySelectorAll('.nav-link').forEach(function(a){
+    a.addEventListener('click', function(){ bsCollapse.hide(); });
+  });
+});
+
+
+</script>
